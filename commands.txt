@@ -1,0 +1,123 @@
+ 1️⃣ Setup & Initialization
+ ----------------------------
+terraform init--> Initializes a Terraform working directory. Downloads providers and modules.
+
+#terraform init
+
+terraform fmt--> Formats Terraform configuration files for readability and consistency.
+
+#terraform fmt
+
+terraform validate--> Validates the configuration files for syntax errors.
+
+#terraform validate
+
+terraform version--> Displays the installed Terraform version.
+
+#terraform version
+
+2️⃣ Planning & Applying
+-----------------------
+
+terraform plan-->Shows what Terraform will do before applying changes.
+
+#terraform plan
+
+terraform plan -out=tfplan-->Saves the execution plan to a file for later use.
+
+#terraform plan -out=tf.plan
+
+terraform apply-->Applies the changes defined in the configuration files.
+
+#terraform apply
+
+terraform apply tfplan-->Applies the previously saved execution plan (tfplan).
+
+#terraform apply tf.plan
+
+terraform destroy-->Deletes all resources defined in the Terraform configuration.
+
+#terraform destroy
+
+terraform destroy -auto-approve-->Destroys resources without confirmation.
+
+#terraform destroy -auto-approve
+
+
+3️⃣ Managing Resources
+
+terraform state list-->Lists all resources managed by Terraform.
+
+#terraform state list
+
+terraform state show <resource>-->Shows details of a specific resource in the state file.
+
+#terraform state show <resource>
+
+terraform state rm <resource>-->Removes a resource from Terraform’s state file without deleting it from AWS.
+
+#terraform state rm <resource>
+
+terraform import <resource> <id>-->Imports an existing AWS resource into Terraform state.
+
+#terraform import <resource> <id>
+
+terraform refresh-->Updates the state file to match real-world resources.
+
+#terraform refresh
+
+4️⃣ Workspaces (Managing Multiple Environments)
+
+terraform workspace list-->Lists all available workspaces.
+
+#terraform workspace list
+
+terraform workspace new <name>-->Creates a new workspace.
+
+#terraform workspace new <name>
+
+terraform workspace select <name>-->Switches to a different workspace.
+
+#terraform workspace select <name>
+
+ 5️⃣ Debugging & Logging
+
+terraform taint <resource>-->Marks a resource for forced replacement in the next apply.
+
+terraform untaint <resource>-->Removes the taint from a resource.
+
+terraform output-->Displays outputs defined in the configuration.
+
+terraform graph-->Generates a dependency graph of the configuration.
+
+TF_LOG=DEBUG terraform apply-->Enables debugging logs for Terraform.
+
+6️⃣ Managing Variables & Secrets
+
+terraform apply -var="aws_region=us-west-2"-->Passes a variable directly via the command line.
+
+terraform apply -var-file="terraform.tfvars"-->Loads variables from a .tfvars file.
+
+export TF_VAR_aws_region="us-east-1"-->Sets a Terraform variable via an environment variable.
+
+
+7️⃣ Remote State & Backend
+
+terraform remote config-->Configures a remote backend (deprecated in favor of backend block).
+
+terraform init -backend-config="backend.hcl"-->Initializes Terraform with a backend configuration file.
+
+terraform state pull-->Fetches the latest state from the remote backend.
+
+terraform state push-->Forces the state file to update the remote backend.
+
+terraform force-unlock <LOCK_ID>-->Unlocks a stuck Terraform state.
+
+
+8️⃣ One-Line Automation
+
+terraform fmt && terraform validate && terraform plan && terraform apply -auto-approve
+
+-> Need More Help?
+
+terraform -help
